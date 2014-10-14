@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import static tddmicroexercises.textconvertor.StringEscapeUtils.escapeHtml;
+
 public class HtmlTextConverter
 {
     public static final String BR = "<br />";
@@ -16,19 +18,7 @@ public class HtmlTextConverter
     }
 
     public String convertToHtml() throws IOException{
-
-        BufferedReader reader = getBufferedReader();
-
-        String line = reader.readLine();
-	    String html = "";
-	    while (line != null)
-	    {
-	    	html += StringEscapeUtils.escapeHtml(line);
-	        html += BR;
-	        line = reader.readLine();
-	    }
-	    return html;
-
+	    return getBufferedReader().lines().reduce("", (a, b) -> a + escapeHtml(b) + BR);
     }
 
     protected BufferedReader getBufferedReader() throws FileNotFoundException {
@@ -38,4 +28,5 @@ public class HtmlTextConverter
     public String getFilename() {
 		return this.fullFilenameWithPath;
 	}
+
 }

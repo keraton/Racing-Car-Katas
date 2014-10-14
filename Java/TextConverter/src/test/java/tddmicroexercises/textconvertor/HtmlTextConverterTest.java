@@ -26,8 +26,6 @@ public class HtmlTextConverterTest {
     @Test
     public void should_read_the_file_when_the_file_name_is_entered() throws IOException {
         HtmlTextConverter converter = new HtmlTextConverter(FILE_NAME) {
-
-
             @Override
             protected BufferedReader getBufferedReader() throws FileNotFoundException {
                 return new BufferedReaderMock(new ReaderStub())
@@ -42,7 +40,6 @@ public class HtmlTextConverterTest {
                                                + BR
                                                + escapeHtml(LINE_2)
                                                + BR);
-
 
     }
 }
