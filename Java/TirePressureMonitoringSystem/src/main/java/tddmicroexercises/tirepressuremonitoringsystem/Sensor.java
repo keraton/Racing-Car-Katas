@@ -10,9 +10,13 @@ public class Sensor {
 
     public double popNextPressurePsiValue() {
         double pressureTelemetryValue;
-        pressureTelemetryValue = samplePressure( );
+        pressureTelemetryValue = getSamplePressure();
 
         return OFFSET + pressureTelemetryValue;
+    }
+
+    protected double getSamplePressure() {
+        return samplePressure();
     }
 
     private static double samplePressure() {
