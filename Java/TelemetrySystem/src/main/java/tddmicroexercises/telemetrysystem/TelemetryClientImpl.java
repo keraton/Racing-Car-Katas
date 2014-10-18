@@ -2,8 +2,7 @@ package tddmicroexercises.telemetrysystem;
 
 import java.util.Random;
 
-public class TelemetryClient
-{
+public class TelemetryClientImpl implements TelemetryClient {
     public static final String DIAGNOSTIC_MESSAGE = "AT#UD";
 
     private boolean onlineStatus;
@@ -11,11 +10,13 @@ public class TelemetryClient
 
     private final Random connectionEventsSimulator = new Random(42);
 
+    @Override
     public boolean getOnlineStatus()
     {
         return onlineStatus; 
     }
 
+    @Override
     public void connect(String telemetryServerConnectionString)
     {
         if (telemetryServerConnectionString == null || "".equals(telemetryServerConnectionString))
@@ -29,11 +30,13 @@ public class TelemetryClient
         onlineStatus = success;
     }
 
+    @Override
     public void disconnect()
     {
         onlineStatus = false;
     }
 
+    @Override
     public void send(String message)
     {
         if (message == null || "".equals(message))
@@ -66,6 +69,7 @@ public class TelemetryClient
         // here should go the real Send operation (not needed for this exercise)
     }
 
+    @Override
     public String receive()
     {
         String message;
